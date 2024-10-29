@@ -25,17 +25,21 @@ export class homepage{
 
     async launchUrl(){
         await this.page.goto(this.baseUrl)
+        await expect(this.page).toHaveURL("http://localhost:4200/pages/iot-dashboard");
     }
 
     async clickOnFormsLink(){
+        await expect(this.forms).toBeEnabled()
         await this.forms.click()
     }
 
     async clickOnModelAndOverlaysLink(){
+        await expect(this.ModelAndOverlays).toBeEnabled()
         await this.ModelAndOverlays.click()
     }
 
     async clickOnTablesAndDataLink(){
+        await expect(this.tablesAndData).toBeEnabled()
         await this.tablesAndData.click()
     }
 

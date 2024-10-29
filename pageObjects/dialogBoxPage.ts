@@ -20,8 +20,8 @@ export class dialogPage {
   }
 
 
-async performActionInDialogBox()
-        {
+async performActionInDialogBox(){
+  
         await this.dialogPageLink.click()
         await this.openDialogWithEscCloseButton.click()
 await this.dismissDialogButtonfromAlert.click()
