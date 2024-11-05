@@ -4,7 +4,6 @@ import { test, expect, Page, Locator } from "@playwright/test";
 export class homepage {
   // Declare private fields for the page, base URL, and various locators on the home page
   private readonly page: Page;
-  private readonly baseUrl: string;
   private readonly forms: Locator;
   private readonly ModelAndOverlays: Locator;
   private readonly tablesAndData: Locator;
@@ -14,7 +13,6 @@ export class homepage {
   // Constructor to initialize the Page object and define locators
   constructor(page: Page) {
     this.page = page;
-    this.baseUrl = "http://localhost:4200/";
     this.forms = page.getByText("Forms");
     this.ModelAndOverlays = page.getByText("Modal & Overlays");
     this.tablesAndData = page.getByText("Tables & Data");
@@ -26,14 +24,6 @@ export class homepage {
       .locator("nb-option-list")
       .filter({ has: page.locator(".option-list") })
       .locator("nb-option");
-  }
-
-  // Method to launch the specified URL and validate the redirected URL
-  async launchUrl() {
-    await this.page.goto(this.baseUrl);
-    await expect(this.page).toHaveURL(
-      "http://localhost:4200/pages/iot-dashboard"
-    );
   }
 
   // Method to click on the "Forms" link after verifying it's enabled

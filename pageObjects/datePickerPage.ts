@@ -120,10 +120,7 @@ export class datePickerPage {
       for (const selectDate of oneDate) {
         if (selectDate.trim() === currentDate) {
           // Click the date cell once a match is found
-          await this.getDateCells
-            .getByText(selectDate, { exact: true })
-            .nth(1)
-            .click();
+          await this.getDateCells.getByText(selectDate, { exact: true }).click();
         }
       }
     }

@@ -1,15 +1,17 @@
 import {test,expect} from "@playwright/test";
+import { baseUtilities } from "../pageObjects/baseUtilities";
 import { homepage } from "../pageObjects/homePage";
 import { dialogPage } from "../pageObjects/dialogBoxPage";
 
-/**
- * Setup: Launches the base URL before each test case.
+/** 
+ * Setup step that runs before each test case to launch the base URL.
  */
+
 test.beforeEach("launchUrl", async ({ page }) => {
-  // Create an instance of homepage class with the page instance
-  const homePage = new homepage(page); 
-  // Navigates to the base URL
-  await homePage.launchUrl(); 
+  // Instantiate the baseUtilities class
+  const baseUtilitie = new baseUtilities(page) ;
+  // Call the launchUrl method to navigate to the base URL
+  await baseUtilitie.launchUrl(); 
 });
 
 /**
@@ -25,3 +27,12 @@ test("Interact with dialog box in Modal & Overlays", async ({ page }) => {
   // Executes actions in the dialog box
   await dialogbox.performActionInDialogBox(); 
 });
+
+test.afterEach("CloseBrowser",async({page})=>{
+
+  // Instantiate the baseUtilities class
+  const baseUtilitie = new baseUtilities(page) ;
+ // Call the closeBrowser method to close the current page
+ await baseUtilitie.closeBrowser() 
+
+})
