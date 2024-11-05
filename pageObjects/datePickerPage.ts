@@ -2,7 +2,7 @@ import { test, expect, Page, Locator } from "@playwright/test";
 
 // This class represents the page object for interacting with a date picker component
 export class datePickerPage {
-  // Define page and locators for various elements on the form layout page
+  // Define page and locator elements used throughout the class
   private readonly page: Page;
   private readonly clickOnDatePicker: Locator;
   private readonly commondatepicker: Locator;
